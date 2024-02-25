@@ -1,0 +1,11 @@
+### REGISTER USER
+POST http://localhost:3100/register
+Content-Type: application/json
+
+{
+    "cohort_no": "25",
+    "firstName": "MR.LARUSO",
+    "lastName": "MaKNON",
+    "email": "LARUSO.mAKNON@thejitu.com",
+    "password": "atopGUY"
+}
