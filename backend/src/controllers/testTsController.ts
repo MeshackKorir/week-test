@@ -46,7 +46,7 @@ export const registerUser = async (req: Request, res: Response) => {
 
     }
 
-    export const getALLMembers = async (req: Request, res: Response) => {
+export const getAllUsers = async (req: Request, res: Response) => {
         try {
             const pool = await mssql.connect(sqlConfig);
             const result = await pool.request().query('SELECT * FROM Members');
@@ -56,7 +56,8 @@ export const registerUser = async (req: Request, res: Response) => {
             return res.status(500).json({ error: "An error occurred while fetching all members." });
         }
     };
-    export const getOneMember = async (req: Request, res: Response) => {
+
+export const getOneUser = async (req: Request, res: Response) => {
         try {
             const id = req.params.id;
     
@@ -79,7 +80,8 @@ export const registerUser = async (req: Request, res: Response) => {
         }
     };
     
-    export const deleteClubMembers = async (req: Request, res: Response) => {
+
+export const deleteUser = async (req: Request, res: Response) => {
         try {
             const { id } = req.params;
             const pool = await mssql.connect(sqlConfig);
@@ -106,14 +108,13 @@ export const registerUser = async (req: Request, res: Response) => {
         }
     };
     
-    // updateUser function
-    export const updateMember = async (req: Request, res: Response) => {
+export const updateMember = async (req: Request, res: Response) => {
         try {
             const { id } = req.params;
     
             const { cohort_no, firstName, lastName, email, password }: testInterface = req.body;
             
-            // Hashing password
+           
             const hashPwd = await bcrypt.hash(password, 6);
     
             if (!password) {
@@ -147,7 +148,6 @@ export const registerUser = async (req: Request, res: Response) => {
             return res.status(500).json({ error: "An error occurred while updating user" });
         }
     };
-
 
 
 
